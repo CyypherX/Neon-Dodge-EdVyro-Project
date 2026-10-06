@@ -1,1 +1,318 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>NEON DODGE — EdVyro Task 03</title><link rel="stylesheet" href="style.css"></head><body><main class="game-shell"><header class="topbar"><div class="brand"><span class="brand-dot"></span><div><h1>NEON DODGE</h1><p>Survive the grid. Beat your best.</p></div></div><div class="stats"><div><span>SCORE</span><strong id="score">00000</strong></div><div><span>TIME</span><strong id="time">00.0</strong></div><div><span>LEVEL</span><strong id="level">1</strong></div><div><span>BEST</span><strong id="best">00000</strong></div></div></header><section class="game-wrap"><canvas id="gameCanvas" aria-label="Neon Dodge game"></canvas><div id="startOverlay" class="overlay"><div class="panel"><div class="eyebrow">TASK 03 • STATE & PROGRESSION</div><h2>NEON<br><span>DODGE</span></h2><p>Survive for 60 seconds, dodge incoming obstacles, and climb through five difficulty levels.</p><div class="rules"><span>LEVELS</span><b>1 → 5</b><span>PROGRESSION</span><b>+1 every 12s</b><span>GOAL</span><b>60 seconds</b></div><div class="controls"><span>← / A</span><span>MOVE LEFT</span><span>→ / D</span><span>MOVE RIGHT</span><span>P / ESC</span><span>PAUSE</span></div><button id="startBtn">START GAME</button></div></div><div id="pauseOverlay" class="overlay hidden"><div class="panel compact"><div class="eyebrow">GAME STATE</div><h2>PAUSED</h2><p>The run is frozen. Timer, score, obstacles, and progression are paused.</p><button id="resumeBtn">RESUME</button><button id="pauseRestartBtn" class="secondary">RESTART RUN</button></div></div><div id="gameOverOverlay" class="overlay hidden"><div class="panel"><div class="eyebrow" id="resultEyebrow">RUN COMPLETE</div><h2 id="resultTitle">GAME OVER</h2><p id="resultText">You collided with an obstacle.</p><div class="result-grid"><div><span>SCORE</span><strong id="finalScore">00000</strong></div><div><span>SURVIVED</span><strong id="finalTime">00.0s</strong></div><div><span>LEVEL</span><strong id="finalLevel">1</strong></div><div><span>BEST</span><strong id="finalBest">00000</strong></div></div><button id="restartBtn">PLAY AGAIN</button></div></div><div id="levelToast" class="level-toast hidden"><span>LEVEL</span><strong id="levelToastNumber">2</strong><small>DIFFICULTY INCREASED</small></div><div class="mobile-controls"><button id="leftBtn">←</button><button id="rightBtn">→</button></div></section><footer>STATE: <b id="stateLabel">START</b> • CORE LOOP: MOVE → DODGE → PROGRESS <span>60 SEC TARGET • P / ESC TO PAUSE</span></footer></main><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="description"
+        content="NEON DODGE — a neon arcade survival game developed as part of the EdVyro Game Development Internship."
+    >
+    <title>NEON DODGE — EdVyro Game Development Capstone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="game-shell">
+
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-dot"></span>
+
+                <div>
+                    <h1>NEON DODGE</h1>
+                    <p>Survive the grid. Beat your best.</p>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <button
+                    id="settingsBtn"
+                    class="icon-btn"
+                    type="button"
+                    aria-label="Open accessibility and audio settings"
+                    title="Settings"
+                >
+                    ⚙
+                </button>
+            </div>
+
+            <div class="stats">
+                <div>
+                    <span>SCORE</span>
+                    <strong id="score">00000</strong>
+                </div>
+
+                <div>
+                    <span>TIME</span>
+                    <strong id="time">00.0</strong>
+                </div>
+
+                <div>
+                    <span>LEVEL</span>
+                    <strong id="level">1</strong>
+                </div>
+
+                <div>
+                    <span>BEST</span>
+                    <strong id="best">00000</strong>
+                </div>
+            </div>
+        </header>
+
+        <section class="game-wrap">
+
+            <canvas
+                id="gameCanvas"
+                aria-label="Neon Dodge game"
+            ></canvas>
+
+            <div
+                id="liveStatus"
+                class="sr-only"
+                aria-live="polite"
+            ></div>
+
+            <!-- START SCREEN -->
+            <div id="startOverlay" class="overlay">
+                <div class="panel">
+
+                    <div class="eyebrow">
+                        EDVYRO • GAME DEVELOPMENT CAPSTONE
+                    </div>
+
+                    <h2>
+                        NEON<br>
+                        <span>DODGE</span>
+                    </h2>
+
+                    <p>
+                        Survive for 60 seconds, dodge incoming obstacles,
+                        and climb through five difficulty levels.
+                    </p>
+
+                    <div class="rules">
+                        <span>LEVELS</span>
+                        <b>1 → 5</b>
+
+                        <span>PROGRESSION</span>
+                        <b>+1 every 12s</b>
+
+                        <span>GOAL</span>
+                        <b>60 seconds</b>
+                    </div>
+
+                    <div class="controls">
+                        <span>← / A</span>
+                        <span>MOVE LEFT</span>
+
+                        <span>→ / D</span>
+                        <span>MOVE RIGHT</span>
+
+                        <span>P / ESC</span>
+                        <span>PAUSE</span>
+                    </div>
+
+                    <button id="startBtn">
+                        START GAME
+                    </button>
+
+                    <div class="credits">
+                        <small>DEVELOPED BY</small>
+                        <strong>SPANDAN CHATTERJEE</strong>
+                        <small>GAME DEVELOPMENT • EDVYRO INTERNSHIP</small>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- PAUSE SCREEN -->
+            <div id="pauseOverlay" class="overlay hidden">
+                <div class="panel compact">
+
+                    <div class="eyebrow">
+                        GAME STATE
+                    </div>
+
+                    <h2>PAUSED</h2>
+
+                    <p>
+                        The run is frozen. Timer, score, obstacles,
+                        and progression are paused.
+                    </p>
+
+                    <button id="resumeBtn">
+                        RESUME
+                    </button>
+
+                    <button
+                        id="pauseRestartBtn"
+                        class="secondary"
+                    >
+                        RESTART RUN
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- GAME OVER / WIN SCREEN -->
+            <div id="gameOverOverlay" class="overlay hidden">
+                <div class="panel">
+
+                    <div
+                        class="eyebrow"
+                        id="resultEyebrow"
+                    >
+                        RUN COMPLETE
+                    </div>
+
+                    <h2 id="resultTitle">
+                        GAME OVER
+                    </h2>
+
+                    <p id="resultText">
+                        You collided with an obstacle.
+                    </p>
+
+                    <div class="result-grid">
+
+                        <div>
+                            <span>SCORE</span>
+                            <strong id="finalScore">00000</strong>
+                        </div>
+
+                        <div>
+                            <span>SURVIVED</span>
+                            <strong id="finalTime">00.0s</strong>
+                        </div>
+
+                        <div>
+                            <span>LEVEL</span>
+                            <strong id="finalLevel">1</strong>
+                        </div>
+
+                        <div>
+                            <span>BEST</span>
+                            <strong id="finalBest">00000</strong>
+                        </div>
+
+                    </div>
+
+                    <button id="restartBtn">
+                        PLAY AGAIN
+                    </button>
+
+                    <div class="credits">
+                        <small>NEON DODGE</small>
+                        <small>
+                            Created by Spandan Chatterjee
+                        </small>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- LEVEL NOTIFICATION -->
+            <div
+                id="levelToast"
+                class="level-toast hidden"
+            >
+                <span>LEVEL</span>
+                <strong id="levelToastNumber">2</strong>
+                <small>DIFFICULTY INCREASED</small>
+            </div>
+
+            <!-- SETTINGS -->
+            <div
+                id="settingsOverlay"
+                class="overlay hidden"
+            >
+                <div
+                    class="panel compact settings-panel"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="settingsTitle"
+                >
+
+                    <div class="eyebrow">
+                        ACCESSIBILITY & AUDIO
+                    </div>
+
+                    <h2 id="settingsTitle">
+                        SETTINGS
+                    </h2>
+
+                    <p>
+                        Adjust feedback and motion without changing
+                        the core game rules.
+                    </p>
+
+                    <label class="setting-row">
+                        <span>
+                            <b>Sound effects</b>
+                            <small>Game event feedback</small>
+                        </span>
+
+                        <input
+                            id="soundToggle"
+                            type="checkbox"
+                            checked
+                        >
+                    </label>
+
+                    <label class="setting-row">
+                        <span>
+                            <b>Reduced motion</b>
+                            <small>Reduce animated visual effects</small>
+                        </span>
+
+                        <input
+                            id="motionToggle"
+                            type="checkbox"
+                        >
+                    </label>
+
+                    <button
+                        id="closeSettingsBtn"
+                        type="button"
+                    >
+                        DONE
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- MOBILE CONTROLS -->
+            <div class="mobile-controls">
+                <button
+                    id="leftBtn"
+                    aria-label="Move left"
+                >
+                    ←
+                </button>
+
+                <button
+                    id="rightBtn"
+                    aria-label="Move right"
+                >
+                    →
+                </button>
+            </div>
+
+        </section>
+
+        <footer>
+            STATE:
+            <b id="stateLabel">START</b>
+            • CORE LOOP:
+            MOVE → DODGE → PROGRESS
+
+            <span>
+                60 SEC TARGET • P / ESC TO PAUSE
+            </span>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

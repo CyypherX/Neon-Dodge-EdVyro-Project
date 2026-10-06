@@ -1,14 +1,85 @@
-EDVYRO TASK 03 — SUBMISSION
+EDVYRO FINAL TASK 05 — SUBMISSION
 
-Task: Game State, Progression, and Persistence
+Task: Published Game Capstone
 Project: Neon Dodge
 Candidate: Spandan Chatterjee
 
-PLAYABLE PROTOTYPE:
+PLAYABLE PUBLISHED BUILD:
 https://neon-dodge-edvyro.vercel.app/
 
 SOURCE REPOSITORY:
 https://github.com/CyypherX/Neon-Dodge-EdVyro-Project
 
-Summary:
-Neon Dodge now uses explicit START, PLAYING, PAUSED, WON, and LOST states. It includes a five-level progression system with a 12-second level rule, a 60-second win condition, pause/resume/restart behavior, persistent best score using localStorage, and supporting state/test documentation.
+
+PROJECT SUMMARY:
+
+Neon Dodge is a browser-based neon arcade survival game developed as the final capstone project for the EdVyro Game Development Internship.
+
+The player must survive for 60 seconds while avoiding falling obstacles, earning score, and progressing through five increasing difficulty levels.
+
+
+FINAL FEATURES:
+
+- 60-second survival gameplay
+- Five-level difficulty progression
+- Start, Playing, Paused, Won, and Lost game states
+- Score and best-score persistence using localStorage
+- Pause and restart functionality
+- Keyboard controls
+- Mobile touch controls
+- Audio feedback and sound toggle
+- Reduced-motion accessibility option
+- Visible keyboard focus
+- Screen-reader live status
+- Responsive mobile-friendly interface
+- Visual feedback for game events
+- Final credits and project information
+- Published production build on Vercel
+
+
+DOCUMENTATION:
+
+- GDD.md
+- STATE-DIAGRAM.md
+- EDGE-CASE-TEST-CHECKLIST.md
+- PLAYTEST-NOTES.md
+- POSTMORTEM.md
+- README.md
+- SUBMISSION.txt
+
+
+PLAYTESTING:
+
+The game was tested by three participants using the same five playtest questions.
+
+Overall results:
+- All participants understood the main objective.
+- Controls were generally easy to discover and use.
+- No major confusion was reported.
+- Feedback highlighted the need for more satisfying audio effects.
+- Additional suggestions included increased difficulty and improved colour grading.
+
+The strongest recurring feedback was to improve and expand satisfying sound effects.
+
+
+TECHNOLOGY:
+
+HTML5
+CSS3
+JavaScript
+HTML Canvas
+Web Audio API
+Browser Local Storage
+
+
+CREDITS:
+
+Game: NEON DODGE
+Developer: Spandan Chatterjee
+Internship: EdVyro — Game Development
+Platform: Web Browser
+
+
+FINAL STATUS:
+
+NEON DODGE has been polished into a published browser game with finalized gameplay systems, progression, accessibility features, responsive controls, audio feedback, documentation, playtesting results, postmortem, credits, and a stable public deployment.
