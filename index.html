@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEON DODGE</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <div>
+          <h1>NEON DODGE</h1>
+          <p>Survive the grid. Beat your best.</p>
+        </div>
+      </div>
+      <div class="stats">
+        <div><span>SCORE</span><strong id="score">00000</strong></div>
+        <div><span>TIME</span><strong id="time">00.0</strong></div>
+        <div><span>BEST</span><strong id="best">00000</strong></div>
+      </div>
+    </header>
+
+    <section class="game-wrap">
+      <canvas id="gameCanvas" aria-label="Neon Dodge game"></canvas>
+
+      <div id="startOverlay" class="overlay">
+        <div class="panel">
+          <div class="eyebrow">TASK 02 • PLAYABLE PROTOTYPE</div>
+          <h2>NEON<br><span>DODGE</span></h2>
+          <p>Move through the neon grid and survive for 60 seconds without hitting an incoming obstacle.</p>
+          <div class="controls">
+            <span>← / A</span><span>MOVE LEFT</span>
+            <span>→ / D</span><span>MOVE RIGHT</span>
+          </div>
+          <button id="startBtn">START GAME</button>
+        </div>
+      </div>
+
+      <div id="gameOverOverlay" class="overlay hidden">
+        <div class="panel">
+          <div class="eyebrow">RUN COMPLETE</div>
+          <h2 id="resultTitle">GAME OVER</h2>
+          <p id="resultText">You collided with an obstacle.</p>
+          <div class="result-grid">
+            <div><span>SCORE</span><strong id="finalScore">00000</strong></div>
+            <div><span>SURVIVED</span><strong id="finalTime">00.0s</strong></div>
+          </div>
+          <button id="restartBtn">PLAY AGAIN</button>
+        </div>
+      </div>
+
+      <div class="mobile-controls" aria-label="Touch controls">
+        <button id="leftBtn">←</button>
+        <button id="rightBtn">→</button>
+      </div>
+    </section>
+
+    <footer>
+      <span>CORE LOOP: MOVE → DODGE → SURVIVE → SCORE</span>
+      <span>60 SEC TARGET</span>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+EDVYRO TASK 02 — SUBMISSION
+
+Task: Game Design Document and Playable Prototype
+Project: Neon Dodge
+Candidate: Spandan Chatterjee
+Internship Domain: Game Development
+
+Submission link:
+[PASTE YOUR PUBLIC VERCEL OR GITHUB PAGES LINK HERE]
+
+Repository:
+[PASTE YOUR PUBLIC GITHUB REPOSITORY LINK HERE]
+
+Included deliverables:
+- One-page Game Design Document
+- Playable browser prototype
+- Source repository
+- Main screen and feedback states
+- Desktop keyboard controls
+- Mobile touch controls
+
+Short description:
+Neon Dodge is a small arcade survival game focused on one clear core mechanic: horizontal movement and obstacle avoidance. The player must survive for 60 seconds while the difficulty increases over time.
