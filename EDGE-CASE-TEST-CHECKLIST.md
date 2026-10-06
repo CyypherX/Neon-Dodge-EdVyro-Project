@@ -1,0 +1,22 @@
+# NEON DODGE — Task 03 Edge-Case Test Checklist
+
+- [ ] Start works from START.
+- [ ] Rapid Start clicks do not create duplicate loops.
+- [ ] P pauses the run and freezes timer/score/obstacles.
+- [ ] Esc pauses the run and freezes timer/score/obstacles.
+- [ ] Resume continues from the same time and score.
+- [ ] Restart from pause resets the run.
+- [ ] Collision enters LOST.
+- [ ] Restart after LOST starts a fresh run.
+- [ ] 60 seconds enters WON.
+- [ ] Restart after WON starts a fresh run.
+- [ ] Level 2 begins at 12 seconds.
+- [ ] Level 3 begins at 24 seconds.
+- [ ] Level 4 begins at 36 seconds.
+- [ ] Level 5 begins at 48 seconds.
+- [ ] Best score remains after browser refresh.
+- [ ] An unfinished run is not restored after refresh.
+- [ ] Pause/Resume actions do nothing when their state is invalid.
+- [ ] Restart does not reset an active PLAYING run unexpectedly.
+- [ ] Mobile left/right controls work.
+- [ ] 60-second target ends the run.

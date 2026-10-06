@@ -1,23 +1,14 @@
-EDVYRO TASK 02 — SUBMISSION
+EDVYRO TASK 03 — SUBMISSION
 
-Task: Game Design Document and Playable Prototype
+Task: Game State, Progression, and Persistence
 Project: Neon Dodge
 Candidate: Spandan Chatterjee
-Internship Domain: Game Development
 
-Submission link:
-[PASTE YOUR PUBLIC VERCEL OR GITHUB PAGES LINK HERE]
+PLAYABLE PROTOTYPE:
+https://neon-dodge-edvyro.vercel.app/
 
-Repository:
-[PASTE YOUR PUBLIC GITHUB REPOSITORY LINK HERE]
+SOURCE REPOSITORY:
+https://github.com/CyypherX/Neon-Dodge-EdVyro-Project
 
-Included deliverables:
-- One-page Game Design Document
-- Playable browser prototype
-- Source repository
-- Main screen and feedback states
-- Desktop keyboard controls
-- Mobile touch controls
-
-Short description:
-Neon Dodge is a small arcade survival game focused on one clear core mechanic: horizontal movement and obstacle avoidance. The player must survive for 60 seconds while the difficulty increases over time.
+Summary:
+Neon Dodge now uses explicit START, PLAYING, PAUSED, WON, and LOST states. It includes a five-level progression system with a 12-second level rule, a 60-second win condition, pause/resume/restart behavior, persistent best score using localStorage, and supporting state/test documentation.

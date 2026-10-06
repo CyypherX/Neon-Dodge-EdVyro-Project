@@ -1,55 +1,34 @@
-# NEON DODGE — Game Design Document
+# NEON DODGE — EdVyro Task 03
 
-## 1. Game Overview
-**Title:** Neon Dodge  
-**Genre:** Arcade / Survival  
-**Platform:** Web Browser  
-**Prototype Type:** Playable single-player prototype  
-**Core mechanic:** Move horizontally to avoid falling neon obstacles and survive as long as possible.
+## State Model
+- START: initial state; Start is available.
+- PLAYING: timer, score, obstacles and progression run.
+- PAUSED: gameplay is frozen; Resume or Restart Run is available.
+- WON: reached 60 seconds; result screen shown.
+- LOST: collision occurred; result screen shown.
 
-## 2. Target Audience
-Casual and beginner-to-intermediate players who enjoy short arcade sessions, score chasing, reflex challenges, and visually simple neon-themed games.
+## Progression Rules
+- Score = 100 points per second.
+- Level 1 starts at 0 seconds.
+- Level increases every 12 seconds, capped at Level 5.
+- Higher levels increase obstacle speed and spawn frequency.
+- 60 seconds is the win condition.
 
-## 3. Game Goal
-The player's objective is to survive for **60 seconds** without colliding with an obstacle. The player's score increases continuously with survival time. A personal best score is stored locally in the browser.
+0–11.9s L1 → 12–23.9s L2 → 24–35.9s L3 → 36–47.9s L4 → 48–60s L5 → WIN
 
-## 4. Rules
-1. The player controls a neon spaceship at the bottom of the play area.
-2. Obstacles spawn from the top and move downward.
-3. The player can move only horizontally.
-4. Touching an obstacle ends the current run.
-5. The game becomes progressively harder as survival time increases.
-6. Surviving for 60 seconds completes the target objective.
-7. The highest score is saved as the local best score.
+## Persistence
+Only the best score is stored in browser localStorage. An unfinished run is not persisted.
 
-## 5. Controls
-| Input | Action |
-|---|---|
-| Left Arrow / A | Move left |
-| Right Arrow / D | Move right |
-| Space | Start or restart |
-| On-screen ← / → buttons | Mobile movement |
+## Controls
+A / Left Arrow: move left
+D / Right Arrow: move right
+P / Esc: pause/resume
+Space: start/restart where allowed
+Mobile arrows: movement
 
-## 6. Core Gameplay Loop
-**Start → Move → Avoid obstacles → Survive → Score increases → Collision / 60-second completion → Game Over / Success → Restart**
+## State Flow
+START → PLAYING → PAUSED → PLAYING
+PLAYING → LOST → PLAYING
+PLAYING → WON → PLAYING
 
-## 7. Feedback States
-- **Start screen:** Explains objective and controls.
-- **Playing state:** Shows score, timer, best score, player, obstacles, grid, and visual effects.
-- **Collision state:** Displays game-over feedback and final score/time.
-- **Success state:** Displays that the 60-second survival target has been completed.
-- **Restart state:** Allows the player to immediately start another run.
-
-## 8. Scope
-The prototype intentionally focuses on one clear mechanic: horizontal movement and obstacle avoidance. Art is created with browser canvas primitives and CSS rather than external assets, keeping the prototype fast to test and easy to reproduce.
-
-## 9. Success Criteria
-The prototype passes when:
-- The game starts from the start screen.
-- The player can move left and right.
-- Obstacles spawn and move toward the player.
-- Collision ends the run.
-- Score and survival time update during play.
-- The 60-second target can be completed.
-- The game can be restarted.
-- The prototype works on desktop and provides basic touch controls on mobile.
+Rapid clicks and invalid transitions are guarded so they do not create duplicate game loops or unexpected resets.

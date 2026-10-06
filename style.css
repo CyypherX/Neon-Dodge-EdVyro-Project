@@ -180,3 +180,14 @@ footer {
   footer { flex-direction: column; gap: 4px; }
   .panel { padding: 28px 20px; }
 }
+
+.stats { flex-wrap: wrap; }
+.rules { display:grid; grid-template-columns:1fr 1fr; gap:7px 16px; max-width:320px; margin:0 auto 14px; padding:8px 10px; border:1px solid rgba(95,252,255,.16); background:rgba(95,252,255,.04); border-radius:8px; }
+.rules span { display:block; color:#9f96bd; font-size:10px; letter-spacing:2px; }
+.rules b { text-align:right; font-family:Orbitron,sans-serif; font-size:11px; }
+.panel.compact { width:min(430px,100%); }
+button.secondary { display:block; margin:12px auto 0; background:transparent; color:#5ffcff; border:1px solid rgba(95,252,255,.35); box-shadow:none; }
+.level-toast { position:absolute; top:22%; left:50%; transform:translate(-50%,-50%); z-index:4; text-align:center; pointer-events:none; padding:16px 26px; border:1px solid rgba(95,252,255,.45); border-radius:16px; background:rgba(5,3,18,.78); backdrop-filter:blur(10px); box-shadow:0 0 38px rgba(95,252,255,.18); }
+.level-toast span { display:block; color:#5ffcff; font:700 10px Orbitron,sans-serif; letter-spacing:3px; }
+.level-toast strong { display:block; font:800 42px Orbitron,sans-serif; color:#ff4fd8; }
+.level-toast small { color:#c5bddb; letter-spacing:2px; }
